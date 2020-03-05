@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="Wakey_Wakey.Views.Navigation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Wakey_Wakey.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <AcrylicBrush x:Key="RDevAcrylic"
+              BackgroundSource="HostBackdrop"
+              TintColor="Black"
+              TintOpacity="0.6"
+              FallbackColor="{StaticResource SystemAccentColor}"/>
+    </Page.Resources>
+    <Grid Background="{ThemeResource RDevAcrylic}">
+        <Border x:Name="AppTitleBar"
+                IsHitTestVisible="True"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
+                Canvas.ZIndex="1">
+            
+            <TextBlock x:Name="AppTitle"
+                       Text="Wakey-Wakey"
+                       VerticalAlignment="Top"
+                       Margin="0,8"
+                       Style="{StaticResource CaptionTextBlockStyle}" />
+        </Border>
+
+        <NavigationView
+            x:Name="mainNav"
+            IsTabStop="False"
+            IsBackButtonVisible="Collapsed"
+            Loaded="NavigationViewControl_Loaded"
+            SelectionChanged="NavigationViewControl_Selection"
+            ItemInvoked="NavigationViewControl_Invoke"
+            PaneOpening="NavigationViewControl_PaneOpened"
+            PaneClosing="NavigationViewControl_PaneClosing">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Save" x:Uid="menu_home" Tag="devicesPage"/>
+                <NavigationViewItem Icon="Refresh" x:Uid="menu_search" Tag="searchPage"/>
+            </NavigationView.MenuItems>
+
+            <Frame x:Name="rootFrame" Navigated="OnRootFrameNavigated" x:FieldModifier="public" />
+        </NavigationView>
+    </Grid>
+</Page>
