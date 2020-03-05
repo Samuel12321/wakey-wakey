@@ -42,7 +42,7 @@
                                         </StackPanel>
                                         <CommandBar Background="Transparent" DefaultLabelPosition="Bottom" VerticalAlignment="Center">
                                             <AppBarButton Icon="MapDrive" Label="Power On" ToolTipService.ToolTip="Power on this device" Tag="{x:Bind id}" Click="Button_PowerOn_Click"/>
-                                            <AppBarButton Icon="DisconnectDrive" Label="Disconnect" ToolTipService.ToolTip="Try turning this computer off using the available tools" Tag="{x:Bind id}"/>
+                                            <!--<AppBarButton Icon="DisconnectDrive" Label="Disconnect" ToolTipService.ToolTip="Try turning this computer off using the available tools" Tag="{x:Bind id}"/>-->
                                             <AppBarButton Icon="Edit"  Label="Edit" ToolTipService.ToolTip="Change saved settings" Tag="{x:Bind id}"/>
                                             <AppBarButton Icon="Delete" Label="Delete" ToolTipService.ToolTip="Remove device from this list" Tag="{x:Bind id}" Click="Button_Delete_Click"/>
                                         </CommandBar>

@@ -88,10 +88,12 @@ namespace Wakey_Wakey.Views
 
             localSettings.Values.Remove("computer_" + id);
 
+            Frame.BackStack.Clear();
             Frame.Navigate(typeof(Views.Home));
         }
         private void Button_AddManually_Click(object sender, RoutedEventArgs e)
         {
+            Frame.BackStack.Clear();
             Frame.Navigate(typeof(Views.AddManually));
         }
         private void DevicesListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
