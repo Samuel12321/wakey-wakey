@@ -63,9 +63,7 @@ namespace Wakey_Wakey.Views
             }
 
             if(SavedDevicesList.Count < 1)
-            {
                 ListGrid.Children.Add(new TextBlock() { Text = "You have no devices saved", Margin = new Thickness() { Left = 12 } });
-            }
 
             DevicesListView.ItemsSource = SavedDevicesList;
         }
@@ -81,13 +79,18 @@ namespace Wakey_Wakey.Views
                 }
             }
         }
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            int.TryParse((sender as Button).Tag.ToString(), out int id);
+
+            if (localSettings.Values.ContainsKey("computer_" + id))
+                return;
+
+            localSettings.Values.Remove("computer_" + id);
+        }
         private void Button_AddManually_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Views.AddManually));
-        }
-        private void Button_Remote_Click(object sender, RoutedEventArgs e)
-        {
-            //Frame.Navigate(typeof(Views.AddManually));
         }
         private void DevicesListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
         {

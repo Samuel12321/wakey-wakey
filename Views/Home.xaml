@@ -39,7 +39,7 @@
                                             <AppBarButton Icon="MapDrive" Label="Power On" ToolTipService.ToolTip="Power on this device" Tag="{x:Bind id}" Click="Button_PowerOn_Click"/>
                                             <AppBarButton Icon="DisconnectDrive" Label="Disconnect" ToolTipService.ToolTip="Try turning this computer off using the available tools" Tag="{x:Bind id}"/>
                                             <AppBarButton Icon="Edit"  Label="Edit" ToolTipService.ToolTip="Change saved settings" Tag="{x:Bind id}"/>
-                                            <AppBarButton Icon="Delete" Label="Delete" ToolTipService.ToolTip="Remove device from this list" Tag="{x:Bind id}"/>
+                                            <AppBarButton Icon="Delete" Label="Delete" ToolTipService.ToolTip="Remove device from this list" Tag="{x:Bind id}" Click="Button_Delete_Click"/>
                                         </CommandBar>
                                     </Grid>
                                 </SwipeControl>
@@ -52,9 +52,6 @@
         <StackPanel Grid.Row="1" Margin="12" Orientation="Horizontal">
             <Button Click="Button_AddManually_Click">
                 <TextBlock x:Uid="add_manualy"/>
-            </Button>
-            <Button Click="Button_Remote_Click" Margin="12,0">
-                <TextBlock Text="Włącz remote desktop connection"/>
             </Button>
         </StackPanel>
     </Grid>

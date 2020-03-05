@@ -50,7 +50,7 @@ namespace Wakey_Wakey.Views
                 FormErrorTip.IsOpen = true;
                 return;
             }
-            if (textfield_address.Text.Length < 11 || textfield_address6.Text.Length < 21)
+            if (textfield_address.Text.Length < 11 && textfield_address6.Text.Length == 0 || textfield_address6.Text.Length < 21 && textfield_address.Text.Length == 0)
             {
                 FormErrorTip.Subtitle = "The IP address provided is too short";
                 FormErrorTip.IsOpen = true;
