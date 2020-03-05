@@ -14,8 +14,9 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.Storage;
 using System.Diagnostics;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+using System.Threading.Tasks;
+using System.Threading;
+using System.Text;
 
 namespace Wakey_Wakey.Views
 {
@@ -39,27 +40,26 @@ namespace Wakey_Wakey.Views
         }
         private void yourListView_ItemSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
         private void UpdateList()
         {
             for (int i = 1; i < 51; i++)
             {
-                if (!localSettings.Values.ContainsKey("computer_" + i))
-                    break;
-
-                string[] raw_device = localSettings.Values["computer_" + i].ToString().Split(';');
-                int.TryParse(raw_device[4], out int port);
-
-                SavedDevicesList.Add(new Classes.NetworkDevice
+                if (localSettings.Values.ContainsKey("computer_" + i))
                 {
-                    id = i,
-                    port = port,
-                    name = raw_device[0],
-                    ip = raw_device[1],
-                    mac = raw_device[2],
-                    subnet = raw_device[3]
-                });
+                    string[] raw_device = localSettings.Values["computer_" + i].ToString().Split(';');
+                    int.TryParse(raw_device[4], out int port);
+
+                    SavedDevicesList.Add(new Classes.NetworkDevice
+                    {
+                        id = i,
+                        port = port,
+                        name = raw_device[0],
+                        ip = raw_device[1],
+                        mac = raw_device[2],
+                        subnet = raw_device[3]
+                    });
+                }
             }
 
             if(SavedDevicesList.Count < 1)
@@ -83,10 +83,12 @@ namespace Wakey_Wakey.Views
         {
             int.TryParse((sender as Button).Tag.ToString(), out int id);
 
-            if (localSettings.Values.ContainsKey("computer_" + id))
+            if (!localSettings.Values.ContainsKey("computer_" + id))
                 return;
 
             localSettings.Values.Remove("computer_" + id);
+
+            Frame.Navigate(typeof(Views.Home));
         }
         private void Button_AddManually_Click(object sender, RoutedEventArgs e)
         {

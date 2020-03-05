@@ -34,6 +34,11 @@
                                                 <Run Text=")"/>
                                             </TextBlock>
                                             <TextBlock Text="{x:Bind mac}" Style="{ThemeResource CaptionTextBlockStyle}" Opacity=".6" Margin="0,4,0,0"/>
+                                            <!--
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Margin="0,4,0,0">
+                                                    <Run Text="(offline)"/>
+                                            </TextBlock>
+                                            -->
                                         </StackPanel>
                                         <CommandBar Background="Transparent" DefaultLabelPosition="Bottom" VerticalAlignment="Center">
                                             <AppBarButton Icon="MapDrive" Label="Power On" ToolTipService.ToolTip="Power on this device" Tag="{x:Bind id}" Click="Button_PowerOn_Click"/>
